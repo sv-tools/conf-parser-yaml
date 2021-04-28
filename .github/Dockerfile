@@ -1,3 +1,3 @@
 FROM scratch
-ENTRYPOINT ["/go-repo-template"]
-COPY go-repo-template /
+ENTRYPOINT ["/conf-parser-yaml"]
+COPY conf-parser-yaml /
