@@ -9,7 +9,7 @@ import (
 )
 
 // Parser is a conf.ParseFunc to parse the given yaml
-func Parser(_ context.Context, r io.Reader) (interface{}, error) {
+func Parser(ctx context.Context, r io.Reader) (interface{}, error) {
 	data, err := ioutil.ReadAll(r)
 	if err != nil {
 		return nil, err
@@ -20,5 +20,5 @@ func Parser(_ context.Context, r io.Reader) (interface{}, error) {
 		return nil, err
 	}
 
-	return res, nil
+	return res, ctx.Err()
 }
