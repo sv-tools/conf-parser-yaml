@@ -3,14 +3,13 @@ package confyaml
 import (
 	"context"
 	"io"
-	"io/ioutil"
 
 	"gopkg.in/yaml.v3"
 )
 
 // Parser is a conf.ParseFunc to parse the given yaml
 func Parser(ctx context.Context, r io.Reader) (interface{}, error) {
-	data, err := ioutil.ReadAll(r)
+	data, err := io.ReadAll(r)
 	if err != nil {
 		return nil, err
 	}
