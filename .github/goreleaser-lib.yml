@@ -1,9 +1,0 @@
-project_name: conf-parser-yaml
-
-release:
-  github:
-    owner: sv-tools
-    name: conf-parser-yaml
-
-builds:
-  - skip: true

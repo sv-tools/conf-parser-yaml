@@ -9,7 +9,7 @@ on:
   pull_request:
 
 env:
-  GO: 1.17
+  GO: 1.23
 
 jobs:
   CodeQL:
