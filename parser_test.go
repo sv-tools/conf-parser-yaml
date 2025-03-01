@@ -25,7 +25,7 @@ foo: 42
 
 func TestParser(t *testing.T) {
 	c := conf.New().WithReaders(conf.NewStreamParser(strings.NewReader(data)).WithParser(confyaml.Parser))
-	require.NoError(t, c.Load(context.Background()))
+	require.NoError(t, c.Load(t.Context()))
 
 	require.Equal(t, 42, c.GetInt("foo"))
 	require.Equal(t, "test", c.Get("bar"))
@@ -41,10 +41,10 @@ func (t *testReader) Read(_ []byte) (int, error) {
 
 func TestParserErrors(t *testing.T) {
 	c := conf.New().WithReaders(conf.NewStreamParser(&testReader{}).WithParser(confyaml.Parser))
-	require.ErrorIs(t, c.Load(context.Background()), errFake)
+	require.ErrorIs(t, c.Load(t.Context()), errFake)
 
 	c = conf.New().WithReaders(conf.NewStreamParser(strings.NewReader(wrongData)).WithParser(confyaml.Parser))
-	require.EqualError(t, c.Load(context.Background()), "yaml: line 1: did not find expected key")
+	require.EqualError(t, c.Load(t.Context()), "yaml: line 1: did not find expected key")
 }
 
 func ExampleParser() {
