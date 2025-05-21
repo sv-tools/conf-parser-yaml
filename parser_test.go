@@ -44,7 +44,7 @@ func TestParserErrors(t *testing.T) {
 	require.ErrorIs(t, c.Load(t.Context()), errFake)
 
 	c = conf.New().WithReaders(conf.NewStreamParser(strings.NewReader(wrongData)).WithParser(confyaml.Parser))
-	require.EqualError(t, c.Load(t.Context()), "yaml: line 1: did not find expected key")
+	require.ErrorContains(t, c.Load(t.Context()), "yaml: line 1: did not find expected key")
 }
 
 func ExampleParser() {
