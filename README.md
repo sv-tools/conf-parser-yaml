@@ -7,6 +7,9 @@
 
 The [conf](https://github.com/sv-tools/conf) parser for YAML format.
 
+```shell
+go get github.com/sv-tools/conf-parser-yaml
+```
 
 ## License
 
